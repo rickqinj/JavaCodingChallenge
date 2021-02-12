@@ -16,6 +16,8 @@ The `X` mark marks how much rainfalls trapped by buildings. So, from the above p
 
 ## Solution
 
+*I definitely sure that there must be some much more efficient solution to solve this problem. Discussion on performance is not the focus of this post.*
+
 I would love to go for a VISUAL COUNTING (not really) solution to solve this riddle. Beforehand, let's re-draw the above picture with 1 and a space character, and put them all into a matrix.
 
 ![Snipaste_2021-02-12_13-15-31](README.assets/Snipaste_2021-02-12_13-15-31.png)
