@@ -1,9 +1,7 @@
 package com.magicphi.javacodingchallenge.rainfallstrap;
 
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Stream;
 
 /**
  *
@@ -24,7 +22,7 @@ public class Main {
             sb.append(",");
         }
         List<String> strs = Arrays.asList(sb.toString().split(","));
-        rainfalls = strs.stream().map(str -> str.trim()).map(str -> str.chars().filter(c -> c==32).count()).reduce(rainfalls, Long::sum);
+        rainfalls = strs.stream().map(str -> str.trim()).map(str -> str.chars().filter(c -> c == 32).count()).reduce(rainfalls, Long::sum);
         return rainfalls;
     }
     
@@ -32,5 +30,5 @@ public class Main {
         int[] arr = new int[] {4,0,1,3,7,4,7};
         System.out.print(calculateRainfalls(arr));
     }
-    
+
 }
