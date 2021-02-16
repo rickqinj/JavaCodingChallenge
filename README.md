@@ -1,6 +1,7 @@
 # Java Coding Challenge Collections
 
-[TOC]
+- [Introduction](introduction)
+- [Challenges](challenges)
 
 ## Introduction
 
