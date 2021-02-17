@@ -21,7 +21,9 @@ public class Main {
         char lastLetter = wordUpperCase.charAt(lenOfWord - 1);
         Stream<String> stream = DICT.stream().filter((entry) -> {
             String dWord = entry.toUpperCase();
-            return dWord.length() == lenOfWord && dWord.charAt(0) == firstLetter && dWord.charAt(lenOfWord - 1) == lastLetter;
+            return dWord.length() == lenOfWord 
+                   && dWord.charAt(0) == firstLetter 
+                   && dWord.charAt(lenOfWord - 1) == lastLetter;
         });
         Optional<String> result = stream.findAny();
         return !result.isPresent();

@@ -21,7 +21,7 @@ Given dictionary {"**elephant**", "**donkey**", "**moose**", "**swan**",  "**dog
 "earhart"  --> true
 "damply"   --> false  //Not unique, same as "donkey"
 "deanery"  --> true
-"macle"    --> false  //Not unique, same as "moose"
+"mache"    --> false  //Not unique, same as "moose"
 "madame"   --> true
 "scan"     --> false  //Not unique, same as "swan"
 "salon"    --> true
@@ -33,49 +33,25 @@ Given dictionary {"**elephant**", "**donkey**", "**moose**", "**swan**",  "**dog
 
 *I definitely sure that there must be some much more efficient solution to solve this problem. Discussion on performance is not the focus of this post.*
 
-I would love to go for a VISUAL COUNTING (not really) solution to solve this riddle. Beforehand, let's re-draw the above picture with 1 and a space character, and put them all into a matrix.
+From my understanding and according to the description, it is a comparison and match question that asks you to look for the same abbreviation of a given word among those words in a dictionary. The pattern of the word abbreviation has already shown in the Question part.
 
-![Snipaste_2021-02-12_13-15-31](README.assets/Snipaste_2021-02-12_13-15-31.png)
+Let's have the word "**mache**" for an example. The abbreviation of the word is "**m3e**", so words in the dictionary that comply with the pattern are all qualified candidates for the comparison. Of course there's no need to iterate all words in the dictionary. we just need to filter out all qualified words from the dictionary first. Actually, for this case we don't need to work out a pattern for your word, the only three factors we care about are:
 
-I will give you an explain later why a space is used here to fill up the blanks in the matrix.
+- The **length** of the word
+- **Initial letter** of the word
+- **Last letter** of the word
 
-Okay, now here's the five strings we can get from the matrix:
-
-![Snipaste_2021-02-12_14-43-10](README.assets/Snipaste_2021-02-12_14-43-10.png)
-
-We can easily find out the amout of all spaces marked in **BLUE** is the answer to this problem. Let's look back the reason why I used spaces to fill up the blanks. It just because I can get rid of all spaces in **RED** easily by calling the String's `trim()` method.
+The length of the word we entered is **5**, the initial letter is "**m**" and the last letter is "**e**", so in the dictionary the word "moose" is perfectly matched. Therefore, the result is "False" meaning that the abbreviation of the word "mache" is not unique in the dictionary.
 
 ## Core Implementation
 
-### Get the height of the highest building
-
 ```java
-int maxHeightOfBuilding = Arrays.stream(arr).max().getAsInt();
+Stream<String> stream = DICT.stream().filter((entry) -> {
+        String dWord = entry.toUpperCase();
+        return dWord.length() == lenOfWord 
+               && dWord.charAt(0) == firstLetter 
+               && dWord.charAt(lenOfWord - 1) == lastLetter;
+});
+Optional<String> result = stream.findAny();
 ```
-
-### Prepare Strings to represent the  status of each layer of the buildings
-
-```java
-for (int i = 0; i < maxHeightOfBuilding; i++) {
-    for (int j = 0; j < numOfBuildings; j++) {
-        String stuffChar = arr[i] > i ? "1" : " ";
-        sb.append(stuffChar);
-    }
-    sb.append(",");
-}
-```
-
-### Count available spaces
-
-```java
-rainfalls = 
-    strs.stream().map(str -> str.trim())
-                 .map(str -> str.chars().filter(c -> c==32).count())
-                 .reduce(rainfalls, Long::sum);
-```
-
-
-
-
-
 
