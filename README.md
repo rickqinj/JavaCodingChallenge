@@ -1,7 +1,7 @@
 # Java Coding Challenge Collections
 
-- [INTRODUCTION](introduction)
-- [CHALLENGES](challenges)
+- [INTRODUCTION](#introduction)
+- [CHALLENGES](#challenges)
 
 ## INTRODUCTION
 
