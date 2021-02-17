@@ -1,4 +1,4 @@
-# How much rainfalls can be trapped by buildings
+# Determine Whether the Word Is Unique in Ditionary
 
 ## Content
 
@@ -8,11 +8,26 @@
 
 ## Question
 
-Have the function `calculateRainfalls(arr)` take the array of non-negative integers stored in `arr`, and determine the largest amount of water that can be trapped. The numbers in the array represent the height of a building (where the width of each building is 1). And if you imagine that it is raining, water will be trapped between the two tallest buildings. For example, the array is {4, 0, 1, 3, 2, 5}, and then the building will look like:
+Every English word can be shortened as the pattern like **a letter plus a positive integer and a letter**. For example, the word "**internationalization**" can be shortened as "**i18n**". Let's call "i18n" is an abbreviation form of the word "internationalization". 
 
-![Snipaste_2021-02-12_11-36-05](README.assets/Snipaste_2021-02-12_11-36-05.png)
+Now, let's assume that we have a dictionary which is full of English words. And you will be determining whether the abbreviation of a word given to you is unique among those word entries in the dictionary.
 
-The `X` mark marks how much rainfalls trapped by buildings. So, from the above picture, the rainfalls amount we can get is 10 (measurement unit doesn't matter).
+Example:
+
+Given dictionary {"**elephant**", "**donkey**", "**moose**", "**swan**",  "**dog**"}, the test result will be the following:
+
+```plain
+"emergent" --> false  //Not unique, same as "elephant". "elephant" is "e6t", the same as "emergent".
+"earhart"  --> true
+"damply"   --> false  //Not unique, same as "donkey"
+"deanery"  --> true
+"macle"    --> false  //Not unique, same as "moose"
+"madame"   --> true
+"scan"     --> false  //Not unique, same as "swan"
+"salon"    --> true
+"dig"      --> false  //Not unique, same as "dog"
+"ding"     --> true
+```
 
 ## Solution
 
