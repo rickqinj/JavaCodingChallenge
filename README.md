@@ -11,8 +11,10 @@ Cause I am not a math guy or a genius who are really good at those brain-twistin
 
 ## CHALLENGES
 
-- [Buildings Trap Rainfalls](https://github.com/rickqinj/JavaCodingChallenge/tree/master/src/main/java/com/magicphi/javacodingchallenge)
+- [Buildings Trap Rainfalls](https://github.com/rickqinj/JavaCodingChallenge/tree/master/src/main/java/com/magicphi/javacodingchallenge/rainfallstrap)
 
   You will implement a method to calculate how much rainfalls can be caught by the shape consisted of a group of buildings, which represented by an array.
 
-- 
+- [Determine the unique word abbreviation](https://github.com/rickqinj/JavaCodingChallenge/tree/master/src/main/java/com/magicphi/javacodingchallenge/uniqueword)
+
+  adsf...
