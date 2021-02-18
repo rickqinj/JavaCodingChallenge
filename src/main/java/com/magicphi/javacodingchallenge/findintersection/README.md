@@ -32,47 +32,47 @@ Output: "false"
 
 *I definitely sure that there must be some much more efficient solution to solve this problem. Discussion on performance is not the focus of this post.*
 
+So let's simplify the issue a little bit. It sounds like to find one thing from another group of things.
 
+![numbers_in_intersection](README.assets/numbers_in_intersection.png)
 
+**Solution 1 - Java Stream API**
 
+We can make use of `List.contains()` method to see whether the target set of number contains the tested number or not. To do so, we need the following steps:
 
+- Convert two string elements to two lists of Integer
+- Evaluate `List.contains(obj)` statement
+- Output a comma-separated string as a result, if any. Otherwise, output "false".
 
+**Note**:
 
+The solution has a **performance issue** because the method `List.contains(obj)` will go to a comparison throughout the whole two sets of numbers. In the worst case, the comparison will go (N x M) times, which N is the size of one set of numbers and M represents the size of the other set of numbers. However, as we have already known that all numbers have been sorted in ascending order, we can alleviate dramatically the impact on performance by reducing the overhead of loop. For example, we may introduce the binary search algorithm to get rid of at least 50% effort on comparison.
 
-
-
+Here, I'd like to leave this for you to optimize.
 
 ## Core Implementation
 
-### Get the height of the highest building
-
 ```java
-int maxHeightOfBuilding = Arrays.stream(arr).max().getAsInt();
-```
+//1. Convert two elements into two lists of numbers.
+Stream<Integer> intList1 = Arrays.stream(strArr[0].split(","))
+        .mapToInt((e) -> {return Integer.parseInt(e.trim());})
+        .distinct().sorted().boxed();
+List<Integer> intList2 = Arrays.stream(strArr[1].split(","))
+        .mapToInt((e) -> {return Integer.parseInt(e.trim());})
+        .distinct().sorted().boxed()
+        .collect(Collectors.toList());
 
-### Prepare Strings to represent the  status of each layer of the buildings
-
-```java
-for (int i = 0; i < maxHeightOfBuilding; i++) {
-    for (int j = 0; j < numOfBuildings; j++) {
-        String stuffChar = arr[i] > i ? "1" : " ";
-        sb.append(stuffChar);
-    }
+//2. Evaluate contains() statement.
+StringBuilder sb = new StringBuilder();
+intList1.filter(intList2::contains).forEach((str) -> {
+    sb.append(str);
     sb.append(",");
+});
+
+//3. Output
+if (sb.length() <= 0) {
+    System.out.println("false");
+} else {
+    System.out.print(sb.deleteCharAt(sb.length() - 1).toString());
 }
 ```
-
-### Count available spaces
-
-```java
-rainfalls = 
-    strs.stream().map(str -> str.trim())
-                 .map(str -> str.chars().filter(c -> c==32).count())
-                 .reduce(rainfalls, Long::sum);
-```
-
-
-
-
-
-
