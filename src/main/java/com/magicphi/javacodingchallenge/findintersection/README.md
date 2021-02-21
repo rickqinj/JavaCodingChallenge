@@ -36,19 +36,17 @@ So let's simplify the issue a little bit. It sounds like to find one thing from 
 
 ![numbers_in_intersection](README.assets/numbers_in_intersection.png)
 
-**Solution 1 - Java Stream API**
+### Solution - Mapping and Containing statement
 
-We can make use of `List.contains()` method to see whether the target set of number contains the tested number or not. To do so, we need the following steps:
+The steps to solve this question:
 
-- Convert two string elements to two lists of Integer
-- Evaluate `List.contains(obj)` statement
-- Output a comma-separated string as a result, if any. Otherwise, output "false".
+- Split each string into an array of Integer.
+- Create a **HashSet**, and populate the HashSet with the integer elements.
+- Iterate elements of one integer array and try them one by one with `Set.contains(obj)`. If *true*, it means that the element is contained by the other array (intersection).
 
-**Note**:
+**Comments:**
 
-The solution has a **performance issue** because the method `List.contains(obj)` will go to a comparison throughout the whole two sets of numbers. In the worst case, the comparison will go (N x M) times, which N is the size of one set of numbers and M represents the size of the other set of numbers. However, as we have already known that all numbers have been sorted in ascending order, we can alleviate dramatically the impact on performance by reducing the overhead of loop. For example, we may introduce the binary search algorithm to get rid of at least 50% effort on comparison.
-
-Here, I'd like to leave this for you to optimize.
+In the former time, I tried `List.contains(obj)` as a statement to evaluate the intersection. But later I realized there was a serious performance issue by this approach. The time complexity of `List.contains()` is **O(n)**, while `hashSet.contains()` is **O(1)**. Therefore, Set should be a better data structure for this solution.
 
 ## Core Implementation
 

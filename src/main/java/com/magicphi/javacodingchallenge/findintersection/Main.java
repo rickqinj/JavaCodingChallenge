@@ -1,10 +1,10 @@
 package com.magicphi.javacodingchallenge.findintersection;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  *
@@ -12,30 +12,28 @@ import java.util.stream.Stream;
  */
 public class Main {
 
-    private static final String[] strArr = new String[]{"91, 67, 3, 25, 85, 87, 98, 62", "-62"};
+    private static final String[] strArr = new String[]{"1, 3, 25, 62, 67, 85, 87, 91, 98", "1, 3, 4, 25, 62, 71, 85"};
     
     private static void findIntersection(String[] strArr) {
         //Convert two elements into two lists of numbers.
-        Stream<Integer> intList1 = Arrays.stream(strArr[0].split(","))
-                .mapToInt((e) -> {return Integer.parseInt(e.trim());})
-                .distinct().sorted().boxed();
-        List<Integer> intList2 = Arrays.stream(strArr[1].split(","))
-                .mapToInt((e) -> {return Integer.parseInt(e.trim());})
-                .distinct().sorted().boxed()
+        String[] testStrArr = Arrays.stream(strArr[0].split(","))
+                .map(String::trim).toArray(String[]::new);
+        String[] targetStrArr = Arrays.stream(strArr[1].split(","))
+                .map(String::trim).toArray(String[]::new);
+        Set<String> targetStrSet = Set.of(targetStrArr);
+        
+        //Evaluate Set.contains(obj) statement
+        List<String> intersection = Arrays.stream(testStrArr)
+                .filter((e) -> targetStrSet.contains(e))
                 .collect(Collectors.toList());
-
-        //Evaluate contains() statement.
-        StringBuilder sb = new StringBuilder();
-        intList1.filter(intList2::contains).forEach((str) -> {
-            sb.append(str);
-            sb.append(",");
-        });
-
+        
         //Output
-        if (sb.length() <= 0) {
-            System.out.println("false");
+        StringBuilder sb = new StringBuilder();
+        intersection.forEach(str -> sb.append(",").append(str));
+        if (sb.length() > 0) {
+            System.out.print(sb.deleteCharAt(0).toString());
         } else {
-            System.out.print(sb.deleteCharAt(sb.length() - 1).toString());
+            System.out.print("false");
         }
     }
     
