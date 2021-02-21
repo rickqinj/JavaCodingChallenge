@@ -53,22 +53,22 @@ In the former time, I tried `List.contains(obj)` as a statement to evaluate the 
 ```java
 //Convert two elements into two lists of numbers.
         String[] testStrArr = Arrays.stream(strArr[0].split(","))
-                .map(String::trim).toArray(String[]::new);
-        String[] targetStrArr = Arrays.stream(strArr[1].split(","))
-                .map(String::trim).toArray(String[]::new);
-        Set<String> targetStrSet = Set.of(targetStrArr);
-        
-        //Evaluate Set.contains(obj) statement
-        List<String> intersection = Arrays.stream(testStrArr)
-                .filter((e) -> targetStrSet.contains(e))
-                .collect(Collectors.toList());
-        
-        //Output
-        StringBuilder sb = new StringBuilder();
-        intersection.forEach(str -> sb.append(",").append(str));
-        if (sb.length() > 0) {
-            System.out.print(sb.deleteCharAt(0).toString());
-        } else {
-            System.out.print("false");
-        }
+        .map(String::trim).toArray(String[]::new);
+String[] targetStrArr = Arrays.stream(strArr[1].split(","))
+        .map(String::trim).toArray(String[]::new);
+Set<String> targetStrSet = Set.of(targetStrArr);
+
+//Evaluate Set.contains(obj) statement
+List<String> intersection = Arrays.stream(testStrArr)
+        .filter((e) -> targetStrSet.contains(e))
+        .collect(Collectors.toList());
+
+//Output
+StringBuilder sb = new StringBuilder();
+intersection.forEach(str -> sb.append(",").append(str));
+if (sb.length() > 0) {
+    System.out.print(sb.deleteCharAt(0).toString());
+} else {
+    System.out.print("false");
+}
 ```
