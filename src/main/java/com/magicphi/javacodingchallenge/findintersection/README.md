@@ -51,26 +51,24 @@ In the former time, I tried `List.contains(obj)` as a statement to evaluate the 
 ## Core Implementation
 
 ```java
-//1. Convert two elements into two lists of numbers.
-Stream<Integer> intList1 = Arrays.stream(strArr[0].split(","))
-        .mapToInt((e) -> {return Integer.parseInt(e.trim());})
-        .distinct().sorted().boxed();
-List<Integer> intList2 = Arrays.stream(strArr[1].split(","))
-        .mapToInt((e) -> {return Integer.parseInt(e.trim());})
-        .distinct().sorted().boxed()
-        .collect(Collectors.toList());
-
-//2. Evaluate contains() statement.
-StringBuilder sb = new StringBuilder();
-intList1.filter(intList2::contains).forEach((str) -> {
-    sb.append(str);
-    sb.append(",");
-});
-
-//3. Output
-if (sb.length() <= 0) {
-    System.out.println("false");
-} else {
-    System.out.print(sb.deleteCharAt(sb.length() - 1).toString());
-}
+//Convert two elements into two lists of numbers.
+        String[] testStrArr = Arrays.stream(strArr[0].split(","))
+                .map(String::trim).toArray(String[]::new);
+        String[] targetStrArr = Arrays.stream(strArr[1].split(","))
+                .map(String::trim).toArray(String[]::new);
+        Set<String> targetStrSet = Set.of(targetStrArr);
+        
+        //Evaluate Set.contains(obj) statement
+        List<String> intersection = Arrays.stream(testStrArr)
+                .filter((e) -> targetStrSet.contains(e))
+                .collect(Collectors.toList());
+        
+        //Output
+        StringBuilder sb = new StringBuilder();
+        intersection.forEach(str -> sb.append(",").append(str));
+        if (sb.length() > 0) {
+            System.out.print(sb.deleteCharAt(0).toString());
+        } else {
+            System.out.print("false");
+        }
 ```
