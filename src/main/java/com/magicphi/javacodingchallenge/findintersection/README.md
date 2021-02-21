@@ -52,7 +52,7 @@ In the former time, I tried `List.contains(obj)` as a statement to evaluate the 
 
 ```java
 //Convert two elements into two lists of numbers.
-        String[] testStrArr = Arrays.stream(strArr[0].split(","))
+String[] testStrArr = Arrays.stream(strArr[0].split(","))
         .map(String::trim).toArray(String[]::new);
 String[] targetStrArr = Arrays.stream(strArr[1].split(","))
         .map(String::trim).toArray(String[]::new);
