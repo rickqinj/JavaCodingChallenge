@@ -46,11 +46,16 @@ The length of the word we entered is **5**, the initial letter is "**m**" and th
 ## Core Implementation
 
 ```java
+//case-insensitive evaluation.
+String wordUpperCase = word.toUpperCase();
+int lenOfWord = wordUpperCase.length();
+String firstLetter = String.valueOf(wordUpperCase.charAt(0));
+String lastLetter = String.valueOf(wordUpperCase.charAt(lenOfWord - 1));
 Stream<String> stream = DICT.stream().filter((entry) -> {
-        String dWord = entry.toUpperCase();
-        return dWord.length() == lenOfWord 
-               && dWord.charAt(0) == firstLetter 
-               && dWord.charAt(lenOfWord - 1) == lastLetter;
+    String dWord = entry.toUpperCase();
+    return dWord.length() == lenOfWord 
+           && dWord.startsWith(firstLetter)   
+           && dWord.endsWith(lastLetter);
 });
 Optional<String> result = stream.findAny();
 ```
