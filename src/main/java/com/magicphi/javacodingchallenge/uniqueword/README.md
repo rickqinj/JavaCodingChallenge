@@ -1,4 +1,4 @@
-# Determine Whether the Word Is Unique in Ditionary
+# Determine Whether the Word Is Unique in Dictionary
 
 ## Content
 
