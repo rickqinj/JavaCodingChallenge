@@ -1,9 +1,7 @@
 package com.magicphi.javacodingchallenge.findintersection;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
@@ -12,7 +10,7 @@ import java.util.stream.Collectors;
  */
 public class Main {
 
-    private static final String[] strArr = new String[]{"1, 3, 25, 62, 67, 85, 87, 91, 98", "1, 3, 4, 25, 62, 71, 85"};
+    private static final String[] strArr = new String[]{"1, 3, 25, 62, 67, 85, 87, 91, 98", "-1, -25"};//"1, 3, 4, 25, 62, 71, 85"
     
     private static void findIntersection(String[] strArr) {
         //Convert two elements into two lists of numbers.
@@ -23,18 +21,16 @@ public class Main {
         Set<String> targetStrSet = Set.of(targetStrArr);
         
         //Evaluate Set.contains(obj) statement
-        List<String> intersection = Arrays.stream(testStrArr)
-                .filter((e) -> targetStrSet.contains(e))
-                .collect(Collectors.toList());
-        
+        String str = Arrays.stream(testStrArr)
+                .filter(targetStrSet::contains)
+                .collect(Collectors.joining(",", "", ""));
+
         //Output
-        StringBuilder sb = new StringBuilder();
-        intersection.forEach(str -> sb.append(",").append(str));
-        if (sb.length() > 0) {
-            System.out.print(sb.deleteCharAt(0).toString());
-        } else {
-            System.out.print("false");
-        }
+        Optional<String> result =
+                Optional.ofNullable(str)
+                        //Filter out string which is not Null but the length is 0).
+                        .filter((e) -> (!e.isEmpty()));
+        System.out.println(result.orElse("false"));
     }
     
     public static void main(String[] args) {
