@@ -1,4 +1,4 @@
-# Do Factorial Calculation by Java Stream API
+# README.md template
 
 ## Content
 
