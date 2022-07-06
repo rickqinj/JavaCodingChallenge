@@ -28,7 +28,7 @@ Okay, now here's the five strings we can get from the matrix:
 
 ![Snipaste_2021-02-12_14-43-10](README.assets/Snipaste_2021-02-12_14-43-10.png)
 
-We can easily find out the amout of all spaces marked in **BLUE** is the answer to this problem. Let's look back the reason why I used spaces to fill up the blanks. It just because I can get rid of all spaces in **RED** easily by calling the String's `trim()` method.
+We can easily find out the amount of all spaces marked in **BLUE** is the answer to this problem. Let's look back the reason why I used spaces to fill up the blanks. It just because I can get rid of all spaces in **RED** easily by calling the String's `trim()` method.
 
 ## Core Implementation
 
