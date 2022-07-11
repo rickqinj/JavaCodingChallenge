@@ -21,7 +21,14 @@ public class Main {
         }
         return result;
     }
-    
+
+    private static long doFactorialNumLessThen21ByRecursion(int num) {
+        if (1 == num) {
+            return 1;
+        }
+        return num * doFactorialNumLessThen21ByRecursion(num - 1);
+    }
+
     private static BigInteger doFactorialNumGreaterThan20(int num) {
         BigInteger result = BigInteger.ONE;
         for (int i = 1; i <= num; i++) {
@@ -34,9 +41,10 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter an integer:");
         int num = scanner.nextInt();
-        System.out.print(doFactorialNumLessThen21ByReduce());
-        System.out.print(doFactorialNumLessThen21ByLoop());
-        System.out.print(doFactorialNumGreaterThan20());
-        System.out.print("The result of factorial(" + num + ")=" + doFactorialNotGreaterThan20(num));
+        System.out.println(doFactorialNumLessThen21ByReduce(num));
+        System.out.println(doFactorialNumLessThen21ByLoop(num));
+        System.out.println(doFactorialNumLessThen21ByRecursion(num));
+        System.out.println(doFactorialNumGreaterThan20(num));
+        
     }
 }
