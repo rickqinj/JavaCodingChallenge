@@ -46,10 +46,10 @@ Let's go to the *Recursion* as the second solution. This approach is a little bi
 
 ```java
 public static long getFactorial(long num) {
-    if (1 == n) {
+    if (1 == num) {
         return 1;
     }
-    return n * getFactorial(n-1); 
+    return num * getFactorial(num - 1); 
 }
 ```
 
